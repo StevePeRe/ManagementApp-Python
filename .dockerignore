@@ -1,0 +1,12 @@
+.venv
+__pycache__
+*.pyc
+.env
+.git
+.gitignore
+README.md
+install.sh
+.idea
+.python-version
+tests
+*.db

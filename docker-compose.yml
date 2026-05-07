@@ -1,0 +1,40 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: spring
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U root -d spring"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      APP_NAME: "managementApp Python API"
+      USE_POSTGRES: "true"
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: spring
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_ECHO: "false"
+      SCHEDULER_ENABLED: "true"
+      SCHEDULER_INTERVAL_SECONDS: "60"
+      TASK_CREATED_TO_RUNNING_MINUTES: "2"
+      TASK_RUNNING_TO_DONE_MINUTES: "8"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pgdata:
