@@ -3,6 +3,7 @@ Esta fase replica la base del backend del proyecto original con FastAPI:
 - Endpoints REST en `/api/tasks`
 - Modelo `Task` con estados `CREATED`, `RUNNING`, `DONE`
 - Persistencia con SQLAlchemy
+- Pytest para testing
 - Manejo de errores básico (`400` y `404`) compatible con el formato anterior
 - Scheduler de estados (cada minuto):
   - `CREATED` -> `RUNNING` cuando supera 2 minutos desde `created_at`
@@ -30,3 +31,6 @@ Esta fase replica la base del backend del proyecto original con FastAPI:
 - `SCHEDULER_INTERVAL_SECONDS=60`
 - `TASK_CREATED_TO_RUNNING_MINUTES=2`
 - `TASK_RUNNING_TO_DONE_MINUTES=8`
+
+## Notas de desarrollo
+Para el desarrollo de esta aplicación he trabajado con [OpenCode](https://opencode.ai/) como herramienta de apoyo. Lo he utilizado porque me ofrece soporte durante la implementación del proyecto, facilita el análisis del código y proporciona una forma flexible de trabajar sobre el desarrollo desde un entorno técnico orientado a terminal.
