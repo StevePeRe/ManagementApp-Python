@@ -1,4 +1,4 @@
-# Backend (iteración 2) - réplica del proyecto anterior
+# Backend (iteración 2) - Migración Java
 Esta fase replica la base del backend del proyecto original con FastAPI:
 - Endpoints REST en `/api/tasks`
 - Modelo `Task` con estados `CREATED`, `RUNNING`, `DONE`
